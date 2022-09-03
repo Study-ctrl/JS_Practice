@@ -4,6 +4,7 @@ class BasicRecursion{
         this.name ="Suryateja";
         this.year = "2022";
         this.value=0;
+        this.res =0;
     }
 
     printval_n_to_1(n)
@@ -69,10 +70,41 @@ class BasicRecursion{
     reverse_number(n){ 
         if(n<10)
         {
-            return this.value;
+            return 10*this.value+n;
         }
         this.value = Math.floor(n%10)+10*this.value;
         return this.reverse_number(Math.floor(n/10));
+    }
+    
+    
+    palindrome(n){
+        this.value = 0;
+        this.res = this.reverse_number(n);
+        console.log(this.res);
+        if(this.res==n){
+        return true;}
+        else
+        {
+        return false;}
+    }
+
+    
+
+    number_of_steps(n){
+        return this.helper(n,0);
+    }
+    helper(n,steps){
+        if(n==0){
+            return steps;
+        }
+        if(n%2==0){
+            return this.helper(n/2,steps+1);
+        }
+        if(n%2!=0)
+        {
+            return this.helper(n-1, steps+1);
+        }
+
     }
 }
 
@@ -84,3 +116,5 @@ console.log(printx.sum(5));
 console.log(printx.sum_of_digits(34));
 console.log(printx.product_of_digits(34));
 console.log(printx.reverse_number(34090));
+console.log(printx.palindrome(344));
+console.log(printx.number_of_steps(4));
